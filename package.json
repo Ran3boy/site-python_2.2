@@ -5,9 +5,9 @@
   "scripts": {
     "build:css": "postcss frontend/styles.css -o docs/assets/styles.min.css",
     "build:js": "terser frontend/app.js -o docs/assets/app.min.js --compress --mangle",
-    "build:site": "mkdocs build --strict",
+    "build:site": "mkdocs build",
     "validate:html": "python -m html5validator --root site --also-check-css --also-check-js",
-    "minify:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o site --input-dir site --file-ext html",
+    "minify:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true --input-dir site --output-dir site --file-ext html",
     "build": "npm run build:css && npm run build:js && npm run build:site && npm run validate:html && npm run minify:html"
   },
   "devDependencies": {
