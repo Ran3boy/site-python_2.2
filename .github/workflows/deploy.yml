@@ -45,7 +45,7 @@ jobs:
           pip install html5validator
 
       - name: Установить зависимости Node.js
-      run: npm install
+        run: npm install
 
       - name: Сборка сайта (CSS, JS, MkDocs, проверка HTML)
         run: npm run build
