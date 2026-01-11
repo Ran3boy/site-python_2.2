@@ -1,0 +1,192 @@
+/* Source CSS -> собирается PostCSS в docs/assets/styles.min.css */
+:root{
+  --bg:#0b1020;
+  --card:#111a33;
+  --text:#e6e9f2;
+  --muted:#aab3cc;
+  --accent:#7c5cff;
+  --border: rgba(255,255,255,.12);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,.25), transparent 60%),
+              radial-gradient(900px 500px at 80% 10%, rgba(18,184,134,.18), transparent 55%),
+              var(--bg);
+}
+
+a{ color: inherit; }
+
+.sp-container{
+  width: min(1100px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* Header */
+.sp-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  background: rgba(11, 16, 32, .65);
+}
+.sp-header .sp-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding: 14px 0;
+}
+.sp-brand{
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-decoration:none;
+}
+.sp-nav{
+  display:flex;
+  gap: 12px;
+}
+.sp-nav__link{
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration:none;
+  color: var(--muted);
+}
+.sp-nav__link.is-active, .sp-nav__link:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+}
+
+/* Burger (mobile) */
+.sp-burger{
+  display:none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+  cursor:pointer;
+}
+.sp-burger span{
+  display:block;
+  width: 18px;
+  height: 2px;
+  margin: 4px auto;
+  background: rgba(230,233,242,.9);
+  border-radius: 2px;
+}
+@media (max-width: 720px){
+  .sp-nav{ display:none; }
+  .sp-burger{ display:block; }
+  .sp-nav.is-open{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top: 64px;
+    right: 16px;
+    padding: 10px;
+    min-width: 220px;
+    background: rgba(11,16,32,.92);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+  }
+}
+
+/* Hero */
+.sp-hero{
+  padding: 48px 0 26px;
+}
+.sp-hero__title{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.1;
+}
+.sp-hero__subtitle{
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 70ch;
+}
+.sp-hero__cta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sp-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(124,92,255,.45);
+  background: rgba(124,92,255,.18);
+  text-decoration:none;
+  font-weight: 650;
+}
+.sp-btn:hover{ background: rgba(124,92,255,.25); }
+.sp-btn--ghost{
+  border-color: var(--border);
+  background: rgba(255,255,255,.05);
+}
+.sp-btn--ghost:hover{ background: rgba(255,255,255,.08); }
+
+/* Main content */
+.sp-main{ padding: 12px 0 48px; }
+.sp-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+@media (max-width: 900px){
+  .sp-grid{ grid-template-columns: 1fr; }
+}
+.sp-card{
+  background: rgba(17,26,51,.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+.sp-card__title{ margin: 0 0 8px; font-size: 18px; }
+.sp-card__text{ margin: 0; color: var(--muted); }
+
+.sp-article{
+  background: rgba(17,26,51,.42);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.sp-article h1, .sp-article h2, .sp-article h3{ margin-top: 18px; }
+.sp-article a{ color: rgba(230,233,242,.95); text-decoration: underline; text-decoration-thickness: 1px; }
+
+/* Footer */
+.sp-footer{
+  border-top: 1px solid var(--border);
+  padding: 22px 0;
+  color: var(--muted);
+  background: rgba(0,0,0,.12);
+}
+.sp-footer__row{
+  display:flex;
+  justify-content:space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.sp-footer__title{ color: var(--text); font-weight: 750; }
+.sp-footer__meta{ margin-top: 4px; font-size: 14px; }
+.sp-footer__right{ text-align:right; }
+@media (max-width: 720px){
+  .sp-footer__right{ text-align:left; }
+}
+
+/* Optional typography improvements (small) */
+.sp-article p{ line-height: 1.65; }

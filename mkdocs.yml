@@ -1,0 +1,18 @@
+site_name: Site Python
+site_description: Учебный статический сайт на MkDocs с кастомной темой, PostCSS и GitHub Actions
+site_author: Nikolay Ivanov
+
+site_url: https://<USERNAME>.github.io/<REPO>/
+
+theme:
+  name: mkdocs
+  custom_dir: theme
+
+nav:
+  - Главная: index.md
+
+extra_css:
+  - assets/styles.min.css
+
+extra_javascript:
+  - assets/app.min.js

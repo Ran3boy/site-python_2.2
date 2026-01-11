@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div class="sp-hero">
+    <div class="sp-container">
+      <h1 class="sp-hero__title">Статический сайт на MkDocs</h1>
+      <p class="sp-hero__subtitle">
+        Кастомная тема (Jinja2), PostCSS-сборка, минификация и CI/CD на GitHub Actions.
+      </p>
+
+      <div class="sp-hero__cta">
+        <a class="sp-btn" href="{{ page.url|url }}#что-здесь-реализовано">Смотреть возможности</a>
+        <a class="sp-btn sp-btn--ghost" href="https://www.mkdocs.org/" target="_blank" rel="noreferrer">Документация MkDocs</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="sp-main">
+    <div class="sp-container">
+      <div class="sp-grid">
+        <section class="sp-card">
+          <h2 class="sp-card__title">Тема</h2>
+          <p class="sp-card__text">Header и footer в отдельных partial-шаблонах, единый layout и страница главной секции.</p>
+        </section>
+
+        <section class="sp-card">
+          <h2 class="sp-card__title">Сборка статики</h2>
+          <p class="sp-card__text">PostCSS (autoprefixer + cssnano), минификация JS (terser) и HTML (html-minifier-terser).</p>
+        </section>
+
+        <section class="sp-card">
+          <h2 class="sp-card__title">CI/CD</h2>
+          <p class="sp-card__text">Валидация HTML в GitHub Actions и деплой на GitHub Pages.</p>
+        </section>
+      </div>
+
+      <article class="sp-article">
+        {{ page.content }}
+      </article>
+    </div>
+  </main>
+{% endblock %}

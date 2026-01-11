@@ -1,0 +1,18 @@
+<header class="sp-header">
+  <div class="sp-container">
+    <a class="sp-brand" href="{{ nav.homepage.url|url }}">Site Python</a>
+
+    <nav class="sp-nav" aria-label="Навигация">
+      {% for nav_item in nav %}
+        <a class="sp-nav__link {% if nav_item.active %}is-active{% endif %}"
+           href="{{ nav_item.url|url }}">
+          {{ nav_item.title }}
+        </a>
+      {% endfor %}
+    </nav>
+
+    <button class="sp-burger" type="button" aria-label="Меню" aria-expanded="false" data-burger>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
